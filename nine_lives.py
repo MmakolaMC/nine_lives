@@ -5,10 +5,10 @@ import random
 def nine_lives(lives, secret_word, word):
     
     if len(lives) == 0:# Stop recursion condition
-        return 'Sorry! You lost.'
+        return 'Game Over!'
 
     print(secret_word)
-    print(f'Lives left: {lives}')
+    print(f'Lives left: {lives}\n')
     guess = input('Guess a letter or a whole word: ')
     
     for i in range(len(word)):# Check if letter in word
@@ -16,7 +16,9 @@ def nine_lives(lives, secret_word, word):
             secret_word[i] = guess# Replace '?' with the correct letter
     
     if guess not in word:
-        lives = lives[:-1]# Take away life
+        lives = lives[:-1]
+        print('Wrong! one life lost.')# Take away life
+
     if guess == word or secret_word == word:
         return f'You won! The secret word was {"".join(word)}'
         
